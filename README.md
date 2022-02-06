@@ -23,3 +23,4 @@ Things you may want to cover:
 
 * ...
 むずい
+練習用にプルリクします。マージをお願いします。
