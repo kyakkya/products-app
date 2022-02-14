@@ -1,27 +1,27 @@
 
-<h2>Edie User</h2>
-<form>
+<h2>Edit User</h2>
+
   <div class="mb-3">
-    <label for="email1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="email1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <i>(leav blank if you do't like change)</i>
-    <input type="password" class="form-control" id="password1">
-  </div>
-  <div class="mb-3">
-    <i>6 characters minimum</i><br>
-    <label for="password_confirmation" class="form-label">Password Confirmation</label>
-    <input type="password_confirmation" class="form-control" id="password2">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Update</button>
-</form>
-<h2>Cancel My account</h2>
-<p>unhappy?</P>
-<form>
-  <button class="btn btn-primary">Cancel my account</button><br>
-  <br><button type="submit" class="btn btn-primary">Back</button>
-</form>  
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+    
+      <%= f.label :email, "email" %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password, "New password" %><br />
+      <%= f.password_field :password, class: 'form-control' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <% end %>
+
+      <%= f.label :password_confirmation, "password_confirmation" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      
+      <%= f.submit "Update", class: "btn btn-primary form-submit-btn" %>
+      <%= link_to  "sign_in", root_path, class: "link-below-user-form" %>
+    
+    <% end %>
+
+    <h2>Cancel My Account</h2>
+    <p>unhappy?</p>
+    
+
