@@ -4,24 +4,31 @@
   <div class="mb-3">
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
     
-      <%= f.label :email, "email" %>
+      <%= f.label :email, "Email" %>
       <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password, "New password" %><br />
+      
+      <%= f.label :password, "Password" %><i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, class: 'form-control' %>
+      <p></p>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <em>(<%= @minimum_password_length %>characters minimum)</em><br />
       <% end %>
-
-      <%= f.label :password_confirmation, "password_confirmation" %>
+      
+      <%= f.label :password_confirmation, "Password confirmation" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
       
+      <%= f.label :current_password, "Current Password" %><i>(we need current password to confirm your changes)</i>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      
       <%= f.submit "Update", class: "btn btn-primary form-submit-btn" %>
-      <%= link_to  "sign_in", root_path, class: "link-below-user-form" %>
+  
     
     <% end %>
 
-    <h2>Cancel My Account</h2>
-    <p>unhappy?</p>
-    
+    <h2>Cancel my Account</h2>
+    <p>Unhappy?</p>
+    <form>
+      <button type="reset" class="btn btn-primary">Cancel my account</button><br>
+      <br><button type="back" class="btn btn-primary">Back</button>
+    </form>
 
